@@ -35,7 +35,6 @@ library.add(
   faStarHalfAlt,
   farFaStar
 );
-
 export default class App extends Component {
   state = {
     cards: [],
@@ -57,11 +56,23 @@ export default class App extends Component {
   };
 
   getCards = () => {
-    axios.get("https://api.myjson.com/bins/6wo9q").then(res => {
-      if (res.status === 200) {
-        this.setState({ cards: Utility.shuffle(res.data) });
-      }
-    });
+    axios
+      .get("https://api.myjson.com/bins/6wo9q")
+      .then(res => {
+        if (res.status === 200) {
+          console.log(
+            `All good! Data fetched, styles applied and stored. Status: ${
+              res.status
+            }`
+          );
+          this.setState({ cards: Utility.shuffle(res.data) });
+        }
+      })
+      .catch(err => {
+        console.log(
+          `Failed to fetch JSON data, which contains card and other styling options, from the server: ${err}`
+        );
+      });
   };
 
   handleCards = cards => {
@@ -79,6 +90,23 @@ export default class App extends Component {
     });
   };
 
+  initTimer = () => {
+    this.timer = setInterval(() => {
+      this.setState(
+        {
+          seconds: this.state.seconds + 1
+        },
+        () => this.checkTime()
+      );
+    }, 1000);
+  };
+
+  checkTime = () => {
+    if (this.state.seconds > 59) {
+      this.setState({ minutes: this.state.minutes + 1, seconds: 0 });
+    }
+  };
+
   handleGear = () => {
     this.setState({
       gearClicked: !this.state.gearClicked
@@ -93,6 +121,10 @@ export default class App extends Component {
         }
       });
     }
+  };
+
+  handleModal = () => {
+    this.setState({ win: !this.state.win });
   };
 
   handleScore = () => {
@@ -124,10 +156,6 @@ export default class App extends Component {
     });
   };
 
-  handleModal = () => {
-    this.setState({ win: !this.state.win });
-  };
-
   storeScores = () => {
     console.log("storing scores to local storage!");
   };
@@ -154,23 +182,6 @@ export default class App extends Component {
       },
       this.getCards()
     );
-  };
-
-  initTimer = () => {
-    this.timer = setInterval(() => {
-      this.setState(
-        {
-          seconds: this.state.seconds + 1
-        },
-        this.checkTime()
-      );
-    }, 1000);
-  };
-
-  checkTime = () => {
-    if (this.state.seconds > 59) {
-      this.setState({ minutes: this.state.minutes + 1, seconds: 0 });
-    }
   };
 
   changeStyle = e => {
@@ -205,6 +216,7 @@ export default class App extends Component {
             handleModal={this.handleModal}
             storeScores={this.storeScores}
             restartGame={this.handleGameSet}
+            stars={this.state.stars}
           />
         )}
       </div>

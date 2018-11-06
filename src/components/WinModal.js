@@ -2,8 +2,9 @@ import React from "react";
 import ReactModal from "react-modal";
 import Restart from "../components/Restart";
 import * as GameStyles from "../gameStyles/GameStyles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const WinModal = ({ storeScores, isOpen, restartGame }) => {
+const WinModal = ({ storeScores, isOpen, restartGame, stars }) => {
   ReactModal.setAppElement("#root");
   return (
     <div>
@@ -17,8 +18,12 @@ const WinModal = ({ storeScores, isOpen, restartGame }) => {
         <h3>Stats: </h3>
         <br />
         <p>Time: </p>
-        <p>Score: 100%</p>
-        <p>Stars: star star star</p>
+        <p>
+          Stars:{" "}
+          {stars.map((star, i) => {
+            return <FontAwesomeIcon key={`${star}-${i}`} icon={star} />;
+          })}
+        </p>
         <h4>Assessment: </h4>
         <div>
           <Restart
