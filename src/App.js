@@ -3,6 +3,7 @@ import Board from "./components/Board";
 import Gear from "./components/Gear";
 import WinModal from "./components/WinModal";
 import ScorePanel from "./components/ScorePanel";
+import Sounds from "./audio/LoopAudio";
 import * as Utility from "./utilities/Utilities";
 import axios from "axios";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -48,7 +49,8 @@ export default class App extends Component {
     win: false,
     seconds: 0,
     minutes: 0,
-    stars: ["star", "star", "star"]
+    stars: ["star", "star", "star"],
+    volume: 50
   };
 
   componentWillMount = () => {
@@ -102,8 +104,9 @@ export default class App extends Component {
   };
 
   checkTime = () => {
-    if (this.state.seconds > 59) {
-      this.setState({ minutes: this.state.minutes + 1, seconds: 0 });
+    const { seconds, minutes } = this.state;
+    if (seconds > 59) {
+      this.setState({ minutes: minutes + 1, seconds: 0 });
     }
   };
 
@@ -184,41 +187,82 @@ export default class App extends Component {
     );
   };
 
+  handleVolumeSlide = value => {
+    const { volume } = this.state;
+    console.log(value);
+    this.setState(
+      {
+        volume: value
+      },
+      () => console.log(volume)
+    );
+  };
+
   changeStyle = e => {
     console.log(e);
   };
 
   render() {
+    const {
+      handleGameSet,
+      handleVolumeSlide,
+      handleGear,
+      changeStyle,
+      handleCards,
+      handleCounter,
+      handleFirstClick,
+      handleScore,
+      handleModal,
+      storeScores
+    } = this;
+    const {
+      cards,
+      stars,
+      seconds,
+      minutes,
+      gearClicked,
+      initClickCount,
+      firstClick,
+      win,
+      volume
+    } = this.state;
     return (
       <div className="App">
         <ScorePanel
-          restartGame={this.handleGameSet}
-          stars={this.state.stars}
-          seconds={this.state.seconds}
-          minutes={this.state.minutes}
+          restartGame={handleGameSet}
+          stars={stars}
+          seconds={seconds}
+          minutes={minutes}
+          handleVolumeSlide={handleVolumeSlide}
+          volume={volume}
         />
         <Gear
-          gearClicked={this.state.gearClicked}
-          handleGear={this.handleGear}
-          changeStyle={this.changeStyle}
+          gearClicked={gearClicked}
+          handleGear={handleGear}
+          changeStyle={changeStyle}
         />
         <Board
-          cards={this.state.cards}
-          handleCards={this.handleCards}
-          handleCounter={this.handleCounter}
-          handleFirstClick={this.handleFirstClick}
-          initClickCount={this.state.initClickCount}
-          handleScore={this.handleScore}
+          cards={cards}
+          handleCards={handleCards}
+          handleCounter={handleCounter}
+          handleFirstClick={handleFirstClick}
+          initClickCount={initClickCount}
+          handleScore={handleScore}
         />
-        {this.state.win && (
+        {win && (
           <WinModal
-            isOpen={this.state.win}
-            handleModal={this.handleModal}
-            storeScores={this.storeScores}
-            restartGame={this.handleGameSet}
-            stars={this.state.stars}
+            isOpen={win}
+            handleModal={handleModal}
+            storeScores={storeScores}
+            restartGame={handleGameSet}
+            stars={stars}
           />
         )}
+        <Sounds
+          loopVolume={volume}
+          firstClick={firstClick}
+          initClickCount={initClickCount}
+        />
       </div>
     );
   }

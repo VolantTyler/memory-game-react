@@ -119,6 +119,13 @@ export const modalStyles = {
   }
 };
 
+export const modalContentStyle = {
+  display: "grid",
+  gridTemplateColumns: "1fr",
+  justifyItems: "center",
+  padding: "1.5rem"
+};
+
 export const scorePanelStyle = {
   maxWidth: "800px",
   height: "5vh",

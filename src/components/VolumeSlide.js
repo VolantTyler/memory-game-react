@@ -7,9 +7,12 @@ export default class VolumeSlide extends Component {
     value: 50
   };
   handleSliderChange = value => {
+    console.log(value);
+    const { handleVolumeSlide } = this.props;
     this.setState({
       value
     });
+    handleVolumeSlide(value);
   };
   render() {
     return (
@@ -20,7 +23,7 @@ export default class VolumeSlide extends Component {
           step={10}
           defaultValue={50}
           value={this.state.value}
-          onChange={this.handleSliderChange}
+          onChange={e => this.handleSliderChange(e)}
         />
       </div>
     );

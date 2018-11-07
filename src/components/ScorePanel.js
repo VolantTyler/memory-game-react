@@ -10,7 +10,9 @@ const ScorePanel = ({
   initClickCount,
   seconds,
   minutes,
-  stars
+  stars,
+  handleVolumeSlide,
+  volume
 }) => {
   const { scorePanelStyle } = GameStyles;
   return (
@@ -22,7 +24,11 @@ const ScorePanel = ({
         label={"Start Over?"}
         condition={"whilePlaying"}
       />
-      <VolumeSlide initClickCount={initClickCount} />
+      <VolumeSlide
+        initClickCount={initClickCount}
+        handleVolumeSlide={handleVolumeSlide}
+        volume={volume}
+      />
     </div>
   );
 };
