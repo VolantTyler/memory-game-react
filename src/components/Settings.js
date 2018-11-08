@@ -2,7 +2,7 @@ import React from "react";
 import * as GameStyles from "../gameStyles/GameStyles";
 
 const Settings = ({ changeStyle }) => {
-  const { settingsStyle, basicStyleAndData } = GameStyles;
+  const { settingsStyle, styleURLs } = GameStyles;
   return (
     <div>
       <div style={settingsStyle}>
@@ -13,11 +13,11 @@ const Settings = ({ changeStyle }) => {
             top: "2rem",
             right: "2rem"
           }}>
-          {basicStyleAndData.map((style, i) => {
+          {styleURLs.map((style, i) => {
             console.log(style);
             return (
-              <li key={i} onClick={e => changeStyle(e)}>
-                {style.card}
+              <li key={i} onClick={e => changeStyle(style.url)}>
+                {style.name}
               </li>
             );
           })}

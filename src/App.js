@@ -6,36 +6,8 @@ import ScorePanel from "./components/ScorePanel";
 import Sounds from "./audio/LoopAudio";
 import * as Utility from "./utilities/Utilities";
 import axios from "axios";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faGlasses,
-  faFrog,
-  faUserSecret,
-  faEye,
-  faPoo,
-  faUserNinja,
-  faDice,
-  faCannabis,
-  faCog,
-  faStar,
-  faStarHalfAlt
-} from "@fortawesome/free-solid-svg-icons";
-import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
 import "./App.css";
-library.add(
-  faGlasses,
-  faFrog,
-  faUserSecret,
-  faEye,
-  faPoo,
-  faUserNinja,
-  faDice,
-  faCannabis,
-  faCog,
-  faStar,
-  faStarHalfAlt,
-  farFaStar
-);
+import * as GameStyles from "./gameStyles/GameStyles";
 export default class App extends Component {
   state = {
     cards: [],
@@ -54,14 +26,19 @@ export default class App extends Component {
   };
 
   componentWillMount = () => {
-    this.handleGameSet("start");
+    this.handleGameSet("start", GameStyles.styleURLs[0].url);
   };
 
-  getCards = () => {
+  componentDidMount = () => {
+    console.log(GameStyles.styleURLs[0].url);
+  };
+
+  getCards = url => {
     axios
-      .get("https://api.myjson.com/bins/6wo9q")
+      .get(url)
       .then(res => {
         if (res.status === 200) {
+          console.log(res);
           console.log(
             `All good! Data fetched, styles applied and stored. Status: ${
               res.status
@@ -163,7 +140,7 @@ export default class App extends Component {
     console.log("storing scores to local storage!");
   };
 
-  handleGameSet = condition => {
+  handleGameSet = (condition, url = GameStyles.styleURLs[0].url) => {
     clearInterval(this.timer);
     if (condition === "replay") {
       this.handleModal();
@@ -183,7 +160,7 @@ export default class App extends Component {
         minutes: 0,
         stars: ["star", "star", "star"]
       },
-      this.getCards()
+      this.getCards(url)
     );
   };
 
@@ -198,8 +175,8 @@ export default class App extends Component {
     );
   };
 
-  changeStyle = e => {
-    console.log(e);
+  changeStyle = url => {
+    this.handleGameSet("resetStyle", url);
   };
 
   render() {
