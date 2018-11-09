@@ -18,7 +18,23 @@ import {
   faTv,
   faTree,
   faBed,
-  faCouch // end home set
+  faCouch, // end home set
+  faAngry,
+  faBong,
+  faBookDead,
+  faBrain,
+  faCodeBranch,
+  faFlushed,
+  faDharmachakra,
+  faDragon, // end oddball set
+  faChess,
+  faChessBishop,
+  faChessBoard,
+  faChessKing,
+  faChessKnight,
+  faChessQueen,
+  faChessPawn,
+  faChessRook
 } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
 export const Library = library.add(
@@ -41,7 +57,23 @@ export const Library = library.add(
   faTv,
   faTree,
   faBed,
-  faCouch // end home set
+  faCouch, // end home set
+  faAngry,
+  faBong,
+  faBookDead,
+  faBrain,
+  faCodeBranch,
+  faFlushed,
+  faDharmachakra,
+  faDragon, // end oddball set
+  faChess,
+  faChessBishop,
+  faChessBoard,
+  faChessKing,
+  faChessKnight,
+  faChessQueen,
+  faChessPawn,
+  faChessRook
 );
 
 export const cardStyle = {
@@ -116,7 +148,9 @@ export const scorePanelStyle = {
   alignItems: "center"
 };
 
-export const styleURLs = [
+export const styles = [
   { name: "Basic", url: "https://api.myjson.com/bins/6wo9q" },
-  { name: "Home", url: "https://api.myjson.com/bins/8htda" }
+  { name: "Home", url: "https://api.myjson.com/bins/8htda" },
+  { name: "Oddball", url: "https://api.myjson.com/bins/1e8avi" },
+  { name: "Tech", url: "https://api.myjson.com/bins/gy65q" }
 ];

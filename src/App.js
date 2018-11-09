@@ -22,15 +22,16 @@ export default class App extends Component {
     seconds: 0,
     minutes: 0,
     stars: ["star", "star", "star"],
-    volume: 50
+    volume: 50,
+    activeCardStyle: GameStyles.styles
   };
 
   componentWillMount = () => {
-    this.handleGameSet("start", GameStyles.styleURLs[0].url);
+    this.handleGameSet("start", GameStyles.styles[0].url);
   };
 
   componentDidMount = () => {
-    console.log(GameStyles.styleURLs[0].url);
+    console.log(GameStyles.styles[0].url);
   };
 
   getCards = url => {
@@ -140,7 +141,7 @@ export default class App extends Component {
     console.log("storing scores to local storage!");
   };
 
-  handleGameSet = (condition, url = GameStyles.styleURLs[0].url) => {
+  handleGameSet = (condition, url = GameStyles.styles[0].url) => {
     clearInterval(this.timer);
     if (condition === "replay") {
       this.handleModal();
