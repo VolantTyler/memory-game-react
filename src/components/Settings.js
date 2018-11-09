@@ -1,7 +1,7 @@
 import React from "react";
 import * as GameStyles from "../gameStyles/GameStyles";
 
-const Settings = ({ changeStyle }) => {
+const Settings = ({ handleChange }) => {
   const { settingsStyle, styles } = GameStyles;
   return (
     <div>
@@ -13,18 +13,22 @@ const Settings = ({ changeStyle }) => {
             top: "2rem",
             right: "2rem"
           }}>
-          {styles.map((style, i) => {
-            console.log(style);
-            return (
-              <li key={i} onClick={e => changeStyle(style.url)}>
+          <select
+            onChange={e => {
+              e.stopPropagation();
+              const url = e.target.value;
+              handleChange(url);
+            }}>
+            <option disabled>Select a card style...</option>
+            {styles.map((style, i) => (
+              <option key={i} value={style.url}>
                 {style.name}
-              </li>
-            );
-          })}
+              </option>
+            ))}
+          </select>
         </ul>
       </div>
     </div>
   );
 };
-
 export default Settings;

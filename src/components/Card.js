@@ -5,8 +5,8 @@ import * as GameStyles from "../gameStyles/GameStyles";
 
 class Card extends Component {
   state = {
-    style: GameStyles.flippedCardStyle,
-    parentStyle: GameStyles.cardStyle
+    style: GameStyles.colorProfiles[0].flippedCardStyle,
+    parentStyle: GameStyles.colorProfiles[0].cardStyle
   };
   handleClick = (e, card) => {
     const { handleFlip } = this.props;
@@ -18,7 +18,7 @@ class Card extends Component {
   render() {
     const { card, matched, clickable } = this.props;
     const { parentStyle, style } = this.state;
-    const { cardStyle, matchedCardStyle } = GameStyles;
+    const { cardStyle, matchedCardStyle } = GameStyles.colorProfiles[0];
     return (
       <div
         style={!matched ? cardStyle : matchedCardStyle}
