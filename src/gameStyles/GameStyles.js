@@ -36,12 +36,12 @@ export const boardStyle = {
 };
 
 export const settingsStyle = {
-  // width: "200px",
-  // height: "200px",
-  // position: "fixed",
-  // top: "5px",
-  // right: "5px",
-  fontSize: "2rem"
+  padding: "5px",
+  fontSize: ".8rem",
+  border: "none",
+  borderTop: "1px solid rgba(139, 22, 10, 0.3)",
+  borderBottom: "1px solid rgba(139, 22, 10, 0.3)",
+  outline: "none"
 };
 
 export const modalStyles = {

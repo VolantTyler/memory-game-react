@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import tock from "../sounds/tock.mp3";
 
 export default class LoopAudio extends Component {
@@ -39,10 +39,6 @@ export default class LoopAudio extends Component {
     }
   };
   render() {
-    return <div />;
+    return null;
   }
-  // sound works, but need to change this to a class and use methods to alter playback speed of some audio (tock, specifically)
 }
-
-// const audio = document.querySelector(".audio").volume;
-// console.log(audio);

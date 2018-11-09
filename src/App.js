@@ -98,11 +98,11 @@ export default class App extends Component {
     seconds: 0,
     minutes: 0,
     stars: ["star", "star", "star"],
-    volume: 50,
-    parentUnmatched: GameStyles,
-    parentMatched: GameStyles,
-    springStyle: GameStyles,
-    cardNotFlippedStyle: GameStyles
+    volume: 50
+    // parentUnmatched: GameStyles, // will be used to offer custom styling
+    // parentMatched: GameStyles,
+    // springStyle: GameStyles,
+    // cardNotFlippedStyle: GameStyles
   };
 
   componentWillMount = () => {
@@ -161,9 +161,12 @@ export default class App extends Component {
   };
 
   checkTime = () => {
-    const { seconds, minutes } = this.state;
+    const { seconds, minutes, win } = this.state;
     if (seconds > 59) {
       this.setState({ minutes: minutes + 1, seconds: 0 });
+    }
+    if (win) {
+      clearInterval(this.timer);
     }
   };
 
@@ -184,7 +187,10 @@ export default class App extends Component {
   };
 
   handleModal = () => {
-    this.setState({ win: !this.state.win });
+    this.setState({ win: !this.state.win }, () => {
+      const { win, seconds, minutes, stars, totalClickCount } = this.state;
+      Utility.storeAndGet(win, seconds, minutes, stars, totalClickCount);
+    });
   };
 
   handleScore = () => {
@@ -198,17 +204,17 @@ export default class App extends Component {
 
   handleStars = () => {
     const { totalClickCount, stars } = this.state;
-    if (totalClickCount === 9) {
+    if (totalClickCount === 12) {
       stars.splice(-1, 1, "star-half-alt");
-    } else if (totalClickCount === 13) {
-      stars.splice(-1, 1, ["far", "star"]);
     } else if (totalClickCount === 17) {
+      stars.splice(-1, 1, ["far", "star"]);
+    } else if (totalClickCount === 22) {
       stars.splice(1, 1, "star-half-alt");
-    } else if (totalClickCount === 21) {
+    } else if (totalClickCount === 27) {
       stars.splice(1, 1, ["far", "star"]);
-    } else if (totalClickCount === 25) {
+    } else if (totalClickCount === 32) {
       stars.splice(0, 1, "star-half-alt");
-    } else if (totalClickCount === 30) {
+    } else if (totalClickCount === 37) {
       stars.splice(0, 1, ["far", "star"]);
     }
     this.setState({
@@ -221,7 +227,6 @@ export default class App extends Component {
   };
 
   handleGameSet = (condition, url = GameStyles.styles[0].url) => {
-    clearInterval(this.timer);
     if (condition === "replay") {
       this.handleModal();
     }
@@ -311,6 +316,8 @@ export default class App extends Component {
             storeScores={storeScores}
             restartGame={handleGameSet}
             stars={stars}
+            seconds={seconds}
+            minutes={minutes}
           />
         )}
         <Sounds

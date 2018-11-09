@@ -19,3 +19,12 @@ export const shuffle = array => {
   /* Returns the newly organized, random array. */
   return array;
 };
+
+export const storeAndGet = (win, seconds, minutes, stars) => {
+  const userStorage = window.localStorage;
+
+  userStorage.setItem("win", win);
+  userStorage.setItem("seconds", seconds);
+  userStorage.setItem("minutes", minutes);
+  userStorage.setItem("stars", stars);
+};
