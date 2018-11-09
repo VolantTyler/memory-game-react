@@ -4,6 +4,7 @@ import Gear from "./components/Gear";
 import WinModal from "./components/WinModal";
 import ScorePanel from "./components/ScorePanel";
 import Sounds from "./audio/LoopAudio";
+import * as GameStyles from "./gameStyles/GameStyles";
 import * as Utility from "./utilities/Utilities";
 import axios from "axios";
 import "./App.css";
@@ -84,7 +85,6 @@ export const Library = library.add(
   faChessPawn,
   faChessRook
 );
-import * as GameStyles from "./gameStyles/GameStyles";
 export default class App extends Component {
   state = {
     cards: [],
