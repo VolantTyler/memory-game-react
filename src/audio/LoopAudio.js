@@ -26,10 +26,15 @@ export default class LoopAudio extends Component {
   }, 1025);
 
   componentWillReceiveProps = props => {
-    const { firstClick } = props;
+    const { firstClick, win } = props;
     if (firstClick) {
       this.setState({
         playing: true
+      });
+    }
+    if (win) {
+      this.setState({
+        playing: false
       });
     }
   };

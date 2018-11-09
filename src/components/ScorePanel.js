@@ -3,6 +3,7 @@ import Stars from "../components/Stars";
 import Time from "../components/Time";
 import Restart from "../components/Restart";
 import VolumeSlide from "../components/VolumeSlide";
+import Gear from "./Gear";
 import * as GameStyles from "../gameStyles/GameStyles";
 
 const ScorePanel = ({
@@ -12,7 +13,10 @@ const ScorePanel = ({
   minutes,
   stars,
   handleVolumeSlide,
-  volume
+  volume,
+  gearClicked,
+  handleGear,
+  changeStyle
 }) => {
   const { scorePanelStyle } = GameStyles;
   return (
@@ -28,6 +32,11 @@ const ScorePanel = ({
         initClickCount={initClickCount}
         handleVolumeSlide={handleVolumeSlide}
         volume={volume}
+      />
+      <Gear
+        gearClicked={gearClicked}
+        handleGear={handleGear}
+        changeStyle={changeStyle}
       />
     </div>
   );

@@ -25,12 +25,15 @@ export default class Gear extends Component {
     const { handleChange } = this;
     const { settingsOpen } = this.state;
     const parentStyle = {
-      position: "fixed",
-      top: "5px",
-      right: "5px"
+      // position: "fixed",
+      // top: "5px",
+      // right: "5px",
+      // display: "grid",
+      // gridTemplateColumns: "1fr",
+      // gridTemplateRows: "1fr 1fr"
     };
     const gearStyle = {
-      fontSize: "3.5rem",
+      fontSize: "3rem",
       color: "rgba(139, 22, 10, 0.3)",
       stroke: "black",
       strokeWidth: "2px",

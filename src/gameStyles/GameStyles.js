@@ -36,11 +36,11 @@ export const boardStyle = {
 };
 
 export const settingsStyle = {
-  width: "200px",
-  height: "200px",
-  position: "fixed",
-  top: "5px",
-  right: "5px",
+  // width: "200px",
+  // height: "200px",
+  // position: "fixed",
+  // top: "5px",
+  // right: "5px",
   fontSize: "2rem"
 };
 
@@ -67,7 +67,7 @@ export const scorePanelStyle = {
   height: "5vh",
   margin: "1.5rem auto",
   display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr 1fr",
+  gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
   gridTemplateRows: "100%",
   justifyItems: "center",
   alignItems: "center"

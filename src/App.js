@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Board from "./components/Board";
-import Gear from "./components/Gear";
 import WinModal from "./components/WinModal";
 import ScorePanel from "./components/ScorePanel";
 import Sounds from "./audio/LoopAudio";
@@ -293,8 +292,6 @@ export default class App extends Component {
           minutes={minutes}
           handleVolumeSlide={handleVolumeSlide}
           volume={volume}
-        />
-        <Gear
           gearClicked={gearClicked}
           handleGear={handleGear}
           changeStyle={changeStyle}
@@ -320,6 +317,7 @@ export default class App extends Component {
           loopVolume={volume}
           firstClick={firstClick}
           initClickCount={initClickCount}
+          win={win}
         />
       </div>
     );
