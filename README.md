@@ -8,6 +8,10 @@ This repo is an initial redesign of Udacity's Front-End Web Developer `Memory Ga
 
 Clone or download the repo, then navigate to the root project directory. In your preferred terminal or command-line tool, run `npm i` to install the project's dependencies. To run the game in development mode, simply enter `npm start` once the dependencies have finished downloading. Open [http://localhost:3000](http://localhost:3000) to view it in the browser (your editor may instead open a window in your default browser).
 
+## (In-Progress) DEMO
+
+Visit [Heroku](https://react-memory-game-jmw.herokuapp.com/) for a live demo.
+
 #### TODOs
 
 - Add responsiveness - currently works fine on laptop and desktop computers, but will need media queries.
