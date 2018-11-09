@@ -42,7 +42,11 @@ const WinModal = ({
               label={"Play Again?"}
               condition={"replay"}
             />
-
+            {/* If clicked, set first modal closed, retrieve local storage
+                and display win history. TODO: work on session storage params.
+                Possible to ask for a username either before or after playing, 
+                for storage purposes? Of course, but consult MDN for info. 
+            */}
             <button
               onClick={() => {
                 storeScores();
