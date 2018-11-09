@@ -7,6 +7,83 @@ import Sounds from "./audio/LoopAudio";
 import * as Utility from "./utilities/Utilities";
 import axios from "axios";
 import "./App.css";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faGlasses,
+  faFrog,
+  faUserSecret,
+  faEye,
+  faPoo,
+  faUserNinja,
+  faDice,
+  faCannabis,
+  faCog,
+  faStar,
+  faStarHalfAlt, // end basic set
+  faBath,
+  faChair,
+  faCarSide,
+  faHome,
+  faTv,
+  faTree,
+  faBed,
+  faCouch, // end home set
+  faAngry,
+  faBong,
+  faBookDead,
+  faBrain,
+  faCodeBranch,
+  faFlushed,
+  faDharmachakra,
+  faDragon, // end oddball set
+  faChess,
+  faChessBishop,
+  faChessBoard,
+  faChessKing,
+  faChessKnight,
+  faChessQueen,
+  faChessPawn,
+  faChessRook
+} from "@fortawesome/free-solid-svg-icons";
+import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
+export const Library = library.add(
+  faGlasses,
+  faFrog,
+  faUserSecret,
+  faEye,
+  faPoo,
+  faUserNinja,
+  faDice,
+  faCannabis,
+  faCog,
+  faStar,
+  faStarHalfAlt,
+  farFaStar, // end basic style
+  faBath,
+  faChair,
+  faCarSide,
+  faHome,
+  faTv,
+  faTree,
+  faBed,
+  faCouch, // end home set
+  faAngry,
+  faBong,
+  faBookDead,
+  faBrain,
+  faCodeBranch,
+  faFlushed,
+  faDharmachakra,
+  faDragon, // end oddball set
+  faChess,
+  faChessBishop,
+  faChessBoard,
+  faChessKing,
+  faChessKnight,
+  faChessQueen,
+  faChessPawn,
+  faChessRook
+);
 import * as GameStyles from "./gameStyles/GameStyles";
 export default class App extends Component {
   state = {
@@ -23,7 +100,10 @@ export default class App extends Component {
     minutes: 0,
     stars: ["star", "star", "star"],
     volume: 50,
-    activeCardStyle: GameStyles.styles
+    parentUnmatched: GameStyles,
+    parentMatched: GameStyles,
+    springStyle: GameStyles,
+    cardNotFlippedStyle: GameStyles
   };
 
   componentWillMount = () => {
