@@ -24,19 +24,31 @@ export default class Gear extends Component {
   render() {
     const { handleChange } = this;
     const { settingsOpen } = this.state;
-    const gearStyle = {
+    const parentStyle = {
       position: "fixed",
-      fontSize: "5.5rem",
-      top: "-7px",
-      right: "7px"
+      top: "5px",
+      right: "5px"
+    };
+    const gearStyle = {
+      fontSize: "3.5rem",
+      color: "rgba(139, 22, 10, 0.3)",
+      stroke: "black",
+      strokeWidth: "2px",
+      filter: "drop-shadow(0 2px 1px #777)"
     };
     return (
-      <div
-        onClick={e => {
-          this.handleClick();
-        }}
-        style={gearStyle}>
-        <FontAwesomeIcon icon="cog" />
+      <div>
+        {!settingsOpen && (
+          <div style={parentStyle}>
+            <FontAwesomeIcon
+              icon="cog"
+              style={gearStyle}
+              onClick={e => {
+                this.handleClick();
+              }}
+            />
+          </div>
+        )}
         {settingsOpen && <Settings handleChange={handleChange} />}
       </div>
     );

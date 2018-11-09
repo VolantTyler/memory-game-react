@@ -6,27 +6,20 @@ const Settings = ({ handleChange }) => {
   return (
     <div>
       <div style={settingsStyle}>
-        <ul
-          style={{
-            listStyleType: "none",
-            fontSize: "1.3rem",
-            top: "2rem",
-            right: "2rem"
+        <select
+          defaultValue="Select a card style..."
+          onChange={e => {
+            e.stopPropagation();
+            const url = e.target.value;
+            handleChange(url);
           }}>
-          <select
-            onChange={e => {
-              e.stopPropagation();
-              const url = e.target.value;
-              handleChange(url);
-            }}>
-            <option disabled>Select a card style...</option>
-            {styles.map((style, i) => (
-              <option key={i} value={style.url}>
-                {style.name}
-              </option>
-            ))}
-          </select>
-        </ul>
+          <option disabled>Select a card style...</option>
+          {styles.map((style, i) => (
+            <option key={i} value={style.url}>
+              {style.name}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );

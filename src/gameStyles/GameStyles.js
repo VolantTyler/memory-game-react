@@ -39,8 +39,8 @@ export const settingsStyle = {
   width: "200px",
   height: "200px",
   position: "fixed",
-  top: "3rem",
-  right: "3rem",
+  top: "5px",
+  right: "5px",
   fontSize: "2rem"
 };
 
