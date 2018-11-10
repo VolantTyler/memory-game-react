@@ -39,4 +39,5 @@ export const SelectStyle = styled.select`
   border: none;
   outline: none;
   padding: 5px;
+  cursor: pointer;
 `;
