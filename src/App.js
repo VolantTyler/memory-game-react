@@ -307,11 +307,11 @@ export default class App extends Component {
     } = this.state;
     return (
       <div className="App">
-        {loading && (
+        {loading ? (
           <div style={{ position: "absolute", top: "50%", left: "50%" }}>
             Loading...
           </div>
-        )}
+        ) : null}
         <ScorePanel
           restartGame={handleGameSet}
           stars={stars}
