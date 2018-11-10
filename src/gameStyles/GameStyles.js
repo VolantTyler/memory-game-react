@@ -35,15 +35,6 @@ export const boardStyle = {
   // padding: "1.5rem"
 };
 
-export const settingsStyle = {
-  padding: "5px",
-  fontSize: ".8rem",
-  border: "none",
-  borderTop: "1px solid rgba(139, 22, 10, 0.3)",
-  borderBottom: "1px solid rgba(139, 22, 10, 0.3)",
-  outline: "none"
-};
-
 export const modalStyles = {
   content: {
     top: "50%",
@@ -62,18 +53,7 @@ export const modalContentStyle = {
   padding: "1.5rem"
 };
 
-export const scorePanelStyle = {
-  maxWidth: "800px",
-  height: "5vh",
-  margin: "1.5rem auto",
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
-  gridTemplateRows: "100%",
-  justifyItems: "center",
-  alignItems: "center"
-};
-
-export const styles = [
+export const cardOptions = [
   { name: "Basic", url: "https://api.myjson.com/bins/6wo9q" },
   { name: "Home", url: "https://api.myjson.com/bins/8htda" },
   { name: "Oddball", url: "https://api.myjson.com/bins/1e8avi" },

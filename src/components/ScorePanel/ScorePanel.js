@@ -4,7 +4,7 @@ import Time from "./Time";
 import Button from "../Button/Button";
 import VolumeSlide from "./VolumeSlide";
 import Gear from "../Settings/Gear";
-import * as GameStyles from "../../gameStyles/GameStyles";
+import * as ScorePanelStyles from "./ScorePanelStyles";
 
 const ScorePanel = ({
   restartGame,
@@ -18,9 +18,9 @@ const ScorePanel = ({
   handleGear,
   changeStyle
 }) => {
-  const { scorePanelStyle } = GameStyles;
+  const { ScorePanelStyle } = ScorePanelStyles;
   return (
-    <div style={scorePanelStyle}>
+    <ScorePanelStyle>
       <Stars stars={stars} />
       <Time seconds={seconds} minutes={minutes} />
       <Button
@@ -38,7 +38,7 @@ const ScorePanel = ({
         handleGear={handleGear}
         changeStyle={changeStyle}
       />
-    </div>
+    </ScorePanelStyle>
   );
 };
 

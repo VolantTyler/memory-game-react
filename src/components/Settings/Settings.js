@@ -1,26 +1,30 @@
 import React from "react";
 import * as GameStyles from "../../gameStyles/GameStyles";
+import * as SettingsStyles from "./SettingsStyles";
 
 const Settings = ({ handleChange }) => {
-  const { settingsStyle, styles } = GameStyles;
+  const { cardOptions } = GameStyles;
+  const { MainSettingsStyle, SelectStyle } = SettingsStyles;
   return (
-    <div>
-      <select
-        style={settingsStyle}
+    <MainSettingsStyle>
+      <SelectStyle
         defaultValue="Select a card style..."
         onChange={e => {
-          e.stopPropagation();
-          const url = e.target.value;
+          const url = e.target.selectedOptions[0].getAttribute("data-value");
           handleChange(url);
         }}>
         <option disabled>Select a card style...</option>
-        {styles.map((style, i) => (
-          <option key={i} value={style.url}>
+        {cardOptions.map((style, i) => (
+          <option
+            key={i}
+            value={style.name}
+            data-value={style.url}
+            tabIndex={-1}>
             {style.name}
           </option>
         ))}
-      </select>
-    </div>
+      </SelectStyle>
+    </MainSettingsStyle>
   );
 };
 export default Settings;
