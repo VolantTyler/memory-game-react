@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as SettingsStyles from "./SettingsStyles";
+import { GearStyled } from "./SettingsStyles";
 import Settings from "./Settings";
 
 export default class Gear extends Component {
@@ -27,14 +27,14 @@ export default class Gear extends Component {
     return (
       <div>
         {!settingsOpen && (
-          <SettingsStyles.GearStyled>
+          <GearStyled>
             <FontAwesomeIcon
               icon="cog"
               onClick={e => {
                 this.handleClick();
               }}
             />
-          </SettingsStyles.GearStyled>
+          </GearStyled>
         )}
         {settingsOpen && <Settings handleChange={handleChange} />}
       </div>

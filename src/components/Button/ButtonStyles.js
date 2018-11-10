@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.button.attrs({
+export const ButtonStyle = styled.button.attrs({
   label: props => props.label || undefined
 })`
   border-radius: 2px;

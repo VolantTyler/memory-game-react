@@ -1,7 +1,7 @@
 import React from "react";
 import ReactModal from "react-modal";
 import Button from "../Button/Button";
-import * as GameStyles from "../../gameStyles/GameStyles";
+import { modalStyles, modalContentStyle } from "./ModalStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const WinModal = ({
@@ -17,10 +17,10 @@ const WinModal = ({
     <div>
       <ReactModal
         isOpen={isOpen}
-        style={GameStyles.modalStyles}
+        style={modalStyles}
         onRequestClose={restartGame}
         contentLobal="Memory Game Win Modal">
-        <div style={GameStyles.modalContentStyle}>
+        <div style={modalContentStyle}>
           <h2>You Win!</h2>
           <br />
           <h3>Stats: </h3>

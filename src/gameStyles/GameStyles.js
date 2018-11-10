@@ -23,36 +23,6 @@ export const colorProfiles = [
   }
 ];
 
-export const boardStyle = {
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr 1fr",
-  gridTemplateRows: "1fr 1fr 1fr 1fr",
-  gap: ".5rem",
-  maxWidth: "800px",
-  maxHeight: "80vh",
-  height: "1350px",
-  margin: "0 auto"
-  // padding: "1.5rem"
-};
-
-export const modalStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
-};
-
-export const modalContentStyle = {
-  display: "grid",
-  gridTemplateColumns: "1fr",
-  justifyItems: "center",
-  padding: "1.5rem"
-};
-
 export const cardOptions = [
   { name: "Basic", url: "https://api.myjson.com/bins/6wo9q" },
   { name: "Home", url: "https://api.myjson.com/bins/8htda" },

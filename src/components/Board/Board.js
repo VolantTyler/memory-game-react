@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import * as GameStyles from "../../gameStyles/GameStyles";
+import { BoardStyle } from "./BoardStyles";
 
 export default class Board extends Component {
   state = {
@@ -92,9 +92,8 @@ export default class Board extends Component {
   };
   render() {
     const { cards } = this.props;
-    const { boardStyle } = GameStyles;
     return (
-      <div style={boardStyle}>
+      <BoardStyle>
         {cards.map((card, i) => {
           return (
             <Card
@@ -106,7 +105,7 @@ export default class Board extends Component {
             />
           );
         })}
-      </div>
+      </BoardStyle>
     );
   }
 }

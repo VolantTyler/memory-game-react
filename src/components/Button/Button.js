@@ -1,10 +1,9 @@
 import React from "react";
-import * as ButtonStyles from "./ButtonStyles";
+import { ButtonStyle } from "./ButtonStyles";
 
 const Button = ({ restartGame, storeScores, label, condition }) => {
-  const { Button } = ButtonStyles;
   return (
-    <Button
+    <ButtonStyle
       label={label}
       onClick={e => {
         condition === "replay" || condition === "whilePlaying"
@@ -12,7 +11,7 @@ const Button = ({ restartGame, storeScores, label, condition }) => {
           : storeScores();
       }}>
       {label}
-    </Button>
+    </ButtonStyle>
   );
 };
 
