@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Card from "./Card";
+import Card from "./Card/Card";
 import { BoardStyle } from "./BoardStyles";
 
 export default class Board extends Component {

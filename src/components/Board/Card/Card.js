@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Spring } from "react-spring";
-import * as GameStyles from "../../gameStyles/GameStyles";
+import * as GameStyles from "../../../gameStyles/GameStyles";
 
 class Card extends Component {
   state = {

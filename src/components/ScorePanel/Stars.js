@@ -1,11 +1,11 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Icon, starStyle } from "./ScorePanelStyles";
 
 const Stars = ({ stars }) => {
   return (
     <div>
       {stars.map((star, i) => (
-        <FontAwesomeIcon key={`${star}-${i}`} icon={stars[i]} />
+        <Icon key={`${star}-${i}`} icon={stars[i]} style={starStyle} />
       ))}
     </div>
   );
