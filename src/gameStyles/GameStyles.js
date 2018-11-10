@@ -5,7 +5,7 @@ export const colorProfiles = [
       display: "grid",
       backgroundColor: "rgba(139, 22, 10, 0.3)",
       borderRadius: "5px",
-      boxShadow: "0 1px 3rem 2px rgba(185, 200, 250, 0.85)"
+      boxShadow: "0 1px 3rem 2px rgba(135, 200, 250, 0.65)"
     },
     flippedCardStyle: {
       opacity: 1,
