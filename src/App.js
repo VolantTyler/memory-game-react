@@ -162,6 +162,7 @@ export default class App extends Component {
 
   checkTime = () => {
     const { seconds, minutes, win } = this.state;
+    console.log(win);
     if (seconds > 59) {
       this.setState({ minutes: minutes + 1, seconds: 0 });
     }
@@ -227,6 +228,7 @@ export default class App extends Component {
   };
 
   handleGameSet = (condition, url = GameStyles.cardOptions[0].url) => {
+    console.log(condition);
     if (condition === "replay") {
       this.handleModal();
     }
@@ -245,7 +247,11 @@ export default class App extends Component {
         minutes: 0,
         stars: ["star", "star", "star"]
       },
-      this.getCards(url)
+      () => {
+        clearInterval(this.timer);
+        console.log(this);
+        this.getCards(url);
+      }
     );
   };
 

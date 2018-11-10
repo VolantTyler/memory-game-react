@@ -51,7 +51,11 @@ const WinModal = ({
                 game storage, in addition to local storage -- local for per-user, backend
                 for leaderboards.
             */}
-            <Button label="Save Scores?" storeScores={storeScores} />
+            <Button
+              label="Save Scores?"
+              condition="storeScores"
+              storeScores={storeScores}
+            />
           </div>
         </div>
       </ReactModal>

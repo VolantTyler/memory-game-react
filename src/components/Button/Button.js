@@ -6,9 +6,7 @@ const Button = ({ restartGame, storeScores, label, condition }) => {
     <ButtonStyle
       label={label}
       onClick={e => {
-        condition === "replay" || condition === "whilePlaying"
-          ? restartGame(condition)
-          : storeScores();
+        condition === "storeScores" ? storeScores() : restartGame(condition);
       }}>
       {label}
     </ButtonStyle>

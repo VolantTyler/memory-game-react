@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonStyle = styled.button.attrs({
-  label: props => props.label || undefined
+  label: props => props.label
 })`
   border-radius: 2px;
   background-color: rgba(139, 22, 10, 0.3);
