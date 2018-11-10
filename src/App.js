@@ -98,8 +98,7 @@ export default class App extends Component {
     seconds: 0,
     minutes: 0,
     stars: ["star", "star", "star"],
-    volume: 50,
-    loading: true
+    volume: 50
     // parentUnmatched: GameStyles, // will be used to offer custom styling
     // parentMatched: GameStyles,
     // springStyle: GameStyles,
@@ -111,16 +110,7 @@ export default class App extends Component {
   };
 
   componentDidMount = () => {
-    setTimeout(() => {
-      this.setState(
-        {
-          loading: !this.state.loading
-        },
-        () => {
-          console.log(this.state.loading);
-        }
-      );
-    }, 1500);
+    console.log(GameStyles.cardOptions[0].url);
   };
 
   getCards = url => {
@@ -302,16 +292,10 @@ export default class App extends Component {
       initClickCount,
       firstClick,
       win,
-      volume,
-      loading
+      volume
     } = this.state;
     return (
       <div className="App">
-        {loading ? (
-          <div style={{ position: "absolute", top: "50%", left: "50%" }}>
-            Loading...
-          </div>
-        ) : null}
         <ScorePanel
           restartGame={handleGameSet}
           stars={stars}
