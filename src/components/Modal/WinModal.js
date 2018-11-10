@@ -45,13 +45,13 @@ const WinModal = ({
                 and display win history. TODO: work on session storage params.
                 Possible to ask for a username either before or after playing, 
                 for storage purposes? Of course, but consult MDN for info. 
+                When `storeScores` is clicked, update App state property to make the button
+                disabled through ternary on Button component; give a message, too, and
+                ask if the user would like to see the leaderboard. TODO: start backend
+                game storage, in addition to local storage -- local for per-user, backend
+                for leaderboards.
             */}
-            <Button
-              label="Save Scores?"
-              onClick={() => {
-                storeScores();
-              }}
-            />
+            <Button label="Save Scores?" storeScores={storeScores} />
           </div>
         </div>
       </ReactModal>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as SettingsStyles from "./SettingsStyles";
 import Settings from "./Settings";
 
 export default class Gear extends Component {
@@ -14,7 +15,6 @@ export default class Gear extends Component {
   };
 
   handleChange = url => {
-    console.log(url);
     const { changeStyle } = this.props;
     this.setState({
       settingsOpen: !this.state.settingsOpen
@@ -24,33 +24,17 @@ export default class Gear extends Component {
   render() {
     const { handleChange } = this;
     const { settingsOpen } = this.state;
-    const parentStyle = {
-      // position: "fixed",
-      // top: "5px",
-      // right: "5px",
-      // display: "grid",
-      // gridTemplateColumns: "1fr",
-      // gridTemplateRows: "1fr 1fr"
-    };
-    const gearStyle = {
-      fontSize: "3rem",
-      color: "rgba(139, 22, 10, 0.3)",
-      stroke: "black",
-      strokeWidth: "2px",
-      filter: "drop-shadow(0 2px 1px #777)"
-    };
     return (
       <div>
         {!settingsOpen && (
-          <div style={parentStyle}>
+          <SettingsStyles.GearStyled>
             <FontAwesomeIcon
               icon="cog"
-              style={gearStyle}
               onClick={e => {
                 this.handleClick();
               }}
             />
-          </div>
+          </SettingsStyles.GearStyled>
         )}
         {settingsOpen && <Settings handleChange={handleChange} />}
       </div>
