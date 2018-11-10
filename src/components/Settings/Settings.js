@@ -1,5 +1,5 @@
 import React from "react";
-import * as GameStyles from "../gameStyles/GameStyles";
+import * as GameStyles from "../../gameStyles/GameStyles";
 
 const Settings = ({ handleChange }) => {
   const { settingsStyle, styles } = GameStyles;

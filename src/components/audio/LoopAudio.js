@@ -1,5 +1,5 @@
 import { Component } from "react";
-import tock from "../sounds/tock.mp3";
+import tock from "../../components/audio/sounds/tock.mp3";
 
 export default class LoopAudio extends Component {
   state = {

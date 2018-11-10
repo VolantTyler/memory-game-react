@@ -1,7 +1,7 @@
 import React from "react";
 import ReactModal from "react-modal";
-import Restart from "../components/Restart";
-import * as GameStyles from "../gameStyles/GameStyles";
+import Button from "../Button/Button";
+import * as GameStyles from "../../gameStyles/GameStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const WinModal = ({
@@ -36,8 +36,7 @@ const WinModal = ({
           </p>
           <h4>Assessment: </h4>
           <div>
-            {/* merge the Restart and regular buttons into a button component */}
-            <Restart
+            <Button
               restartGame={restartGame}
               label={"Play Again?"}
               condition={"replay"}
@@ -47,12 +46,12 @@ const WinModal = ({
                 Possible to ask for a username either before or after playing, 
                 for storage purposes? Of course, but consult MDN for info. 
             */}
-            <button
+            <Button
+              label="Save Scores?"
               onClick={() => {
                 storeScores();
-              }}>
-              Save Scores?
-            </button>
+              }}
+            />
           </div>
         </div>
       </ReactModal>

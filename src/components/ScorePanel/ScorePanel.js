@@ -1,10 +1,10 @@
 import React from "react";
-import Stars from "../components/Stars";
-import Time from "../components/Time";
-import Restart from "../components/Restart";
-import VolumeSlide from "../components/VolumeSlide";
-import Gear from "./Gear";
-import * as GameStyles from "../gameStyles/GameStyles";
+import Stars from "./Stars";
+import Time from "./Time";
+import Button from "../Button/Button";
+import VolumeSlide from "./VolumeSlide";
+import Gear from "../Settings/Gear";
+import * as GameStyles from "../../gameStyles/GameStyles";
 
 const ScorePanel = ({
   restartGame,
@@ -23,7 +23,7 @@ const ScorePanel = ({
     <div style={scorePanelStyle}>
       <Stars stars={stars} />
       <Time seconds={seconds} minutes={minutes} />
-      <Restart
+      <Button
         restartGame={restartGame}
         label={"Start Over?"}
         condition={"whilePlaying"}

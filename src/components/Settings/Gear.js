@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Settings from "../components/Settings";
+import Settings from "./Settings";
 
 export default class Gear extends Component {
   state = {

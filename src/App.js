@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Board from "./components/Board";
-import WinModal from "./components/WinModal";
-import ScorePanel from "./components/ScorePanel";
-import Sounds from "./audio/LoopAudio";
+import Board from "./components/Board/Board";
+import WinModal from "./components/Modal/WinModal";
+import ScorePanel from "./components/ScorePanel/ScorePanel";
+import LoopAudio from "./components/audio/LoopAudio";
 import * as GameStyles from "./gameStyles/GameStyles";
 import * as Utility from "./utilities/Utilities";
 import axios from "axios";
@@ -320,7 +320,7 @@ export default class App extends Component {
             minutes={minutes}
           />
         )}
-        <Sounds
+        <LoopAudio
           loopVolume={volume}
           firstClick={firstClick}
           initClickCount={initClickCount}

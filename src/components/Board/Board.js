@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import * as GameStyles from "../gameStyles/GameStyles";
+import * as GameStyles from "../../gameStyles/GameStyles";
 
 export default class Board extends Component {
   state = {
