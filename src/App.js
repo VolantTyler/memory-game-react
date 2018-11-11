@@ -84,6 +84,7 @@ export const Library = library.add(
   faChessPawn,
   faChessRook
 );
+
 export default class App extends Component {
   state = {
     cards: [],

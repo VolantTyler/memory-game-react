@@ -24,9 +24,9 @@ const WinModal = ({
           <h2>You Win!</h2>
           <br />
           <h3>Stats: </h3>
-          <br />
           <p>
-            Time: {minutes < 10 ? `0${minutes}` : minutes}:{seconds}
+            Time:{" "}
+            {minutes < 10 ? `0${minutes}:${seconds}` : `${minutes}:${seconds}`}
           </p>
           <p>
             Stars:{" "}

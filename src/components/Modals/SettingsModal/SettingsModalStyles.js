@@ -1,6 +1,8 @@
 import ReactModal from "react-modal";
 import styled from "styled-components";
 
+ReactModal.setAppElement("#root");
+
 export const SettingsModalStyled = styled(ReactModal)`
   position: absolute;
   top: 50%;
