@@ -28,16 +28,3 @@ export const GearStyled = styled.div`
     transform: scale(1.1);
   }
 `;
-
-export const MainSettingsStyle = styled.div`
-  fontsize: 0.8rem;
-  border-top: 1px solid rgba(139, 22, 10, 0.3);
-  border-bottom: 1px solid rgba(139, 22, 10, 0.3);
-`;
-
-export const SelectStyle = styled.select`
-  border: none;
-  outline: none;
-  padding: 5px;
-  cursor: pointer;
-`;

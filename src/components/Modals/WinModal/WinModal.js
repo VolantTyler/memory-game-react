@@ -1,6 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
-import Button from "../Button/Button";
+import Button from "../../Button/Button";
 import { modalStyles, modalContentStyle } from "./ModalStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

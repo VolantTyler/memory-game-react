@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Board from "./components/Board/Board";
-import WinModal from "./components/Modal/WinModal";
+import WinModal from "./components/Modals//WinModal/WinModal";
 import ScorePanel from "./components/ScorePanel/ScorePanel";
 import LoopAudio from "./components/audio/LoopAudio";
 import * as GameStyles from "./gameStyles/GameStyles";

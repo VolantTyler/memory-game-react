@@ -36,7 +36,9 @@ export default class Gear extends Component {
             />
           </GearStyled>
         )}
-        {settingsOpen && <Settings handleChange={handleChange} />}
+        {settingsOpen && (
+          <Settings handleChange={handleChange} settingsOpen={settingsOpen} />
+        )}
       </div>
     );
   }
