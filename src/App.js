@@ -46,6 +46,7 @@ import {
   faChessRook
 } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
+import StartModal from "./components/Modals/StartModal/StartModal";
 export const Library = library.add(
   faGlasses,
   faFrog,
@@ -87,6 +88,7 @@ export const Library = library.add(
 
 export default class App extends Component {
   state = {
+    startModalOpen: true,
     cards: [],
     blankSlate: [],
     counter: 0,
@@ -99,7 +101,8 @@ export default class App extends Component {
     seconds: 0,
     minutes: 0,
     stars: ["star", "star", "star"],
-    volume: 50
+    volume: 50,
+    userData: []
     // parentUnmatched: GameStyles, // will be used to offer custom styling
     // parentMatched: GameStyles,
     // springStyle: GameStyles,
@@ -108,6 +111,8 @@ export default class App extends Component {
 
   componentWillMount = () => {
     this.handleGameSet("start", GameStyles.cardOptions[0].url);
+    const userData = Utility.storeAndGet("get");
+    this.setState({ userData }, () => console.log(this.state.userData));
   };
 
   componentDidMount = () => {
@@ -119,7 +124,6 @@ export default class App extends Component {
       .get(url)
       .then(res => {
         if (res.status === 200) {
-          console.log(res);
           console.log(
             `All good! Data fetched, styles applied and stored. Status: ${
               res.status
@@ -191,7 +195,14 @@ export default class App extends Component {
   handleModal = () => {
     this.setState({ win: !this.state.win }, () => {
       const { win, seconds, minutes, stars, totalClickCount } = this.state;
-      Utility.storeAndGet(win, seconds, minutes, stars, totalClickCount);
+      Utility.storeAndGet(
+        "store",
+        win,
+        seconds,
+        minutes,
+        stars,
+        totalClickCount
+      );
     });
   };
 
@@ -271,6 +282,12 @@ export default class App extends Component {
     this.handleGameSet("resetStyle", url);
   };
 
+  handleStart = e => {
+    this.setState({
+      startModalOpen: !this.state.startModalOpen
+    });
+  };
+
   render() {
     const {
       handleGameSet,
@@ -282,9 +299,11 @@ export default class App extends Component {
       handleFirstClick,
       handleScore,
       handleModal,
-      storeScores
+      storeScores,
+      handleStart
     } = this;
     const {
+      startModalOpen,
       cards,
       stars,
       seconds,
@@ -293,10 +312,18 @@ export default class App extends Component {
       initClickCount,
       firstClick,
       win,
-      volume
+      volume,
+      userData
     } = this.state;
     return (
       <div className="App">
+        {startModalOpen && (
+          <StartModal
+            startModalOpen={startModalOpen}
+            userData={userData}
+            handleStart={handleStart}
+          />
+        )}
         <ScorePanel
           restartGame={handleGameSet}
           stars={stars}

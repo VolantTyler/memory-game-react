@@ -20,11 +20,21 @@ export const shuffle = array => {
   return array;
 };
 
-export const storeAndGet = (win, seconds, minutes, stars) => {
+export const storeAndGet = (
+  type,
+  win,
+  seconds,
+  minutes,
+  stars,
+  totalClickCount
+) => {
   const userStorage = window.localStorage;
-
-  userStorage.setItem("win", win);
-  userStorage.setItem("seconds", seconds);
-  userStorage.setItem("minutes", minutes);
-  userStorage.setItem("stars", stars);
+  const userData = [win, seconds, minutes, stars, totalClickCount];
+  if (type === "store") {
+    userStorage.setItem("userData", JSON.stringify(userData));
+  } else if (type === "get") {
+    const userData = JSON.parse(userStorage.getItem("userData"));
+    console.log(userData);
+    return userData;
+  }
 };

@@ -27,5 +27,5 @@ export const cardOptions = [
   { name: "Basic", url: "https://api.myjson.com/bins/6wo9q" },
   { name: "Home", url: "https://api.myjson.com/bins/8htda" },
   { name: "Oddball", url: "https://api.myjson.com/bins/1e8avi" },
-  { name: "Tech", url: "https://api.myjson.com/bins/gy65q" }
+  { name: "Chess", url: "https://api.myjson.com/bins/gy65q" }
 ];
