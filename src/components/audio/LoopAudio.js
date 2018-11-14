@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import tock from "../../components/audio/sounds/tock.mp3";
 
 export default class LoopAudio extends Component {
@@ -16,7 +16,7 @@ export default class LoopAudio extends Component {
       audio.volume = loopVolume / 100;
       audio.play();
       this.setState({
-        audio: audio
+        audio
       });
     } else {
       this.setState({
@@ -39,6 +39,10 @@ export default class LoopAudio extends Component {
     }
   };
   render() {
-    return null;
+    return (
+      <div style={{ display: "none" }}>
+        Audio is brought to you by the letter <em>A</em>
+      </div>
+    );
   }
 }

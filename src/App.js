@@ -46,7 +46,7 @@ import {
   faChessRook
 } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
-import StartModal from "./components/Modals/StartModal/StartModal";
+import StartModal from "./components/Modals/StartModal/StartModal"; // still to be implemented based on success using localStorage
 export const Library = library.add(
   faGlasses,
   faFrog,
@@ -83,12 +83,12 @@ export const Library = library.add(
   faChessKnight,
   faChessQueen,
   faChessPawn,
-  faChessRook
+  faChessRook // end chess set
 );
 
 export default class App extends Component {
   state = {
-    startModalOpen: true,
+    // startModalOpen: true, // to be implemented
     cards: [],
     blankSlate: [],
     counter: 0,
@@ -103,7 +103,7 @@ export default class App extends Component {
     stars: ["star", "star", "star"],
     volume: 50,
     userData: []
-    // parentUnmatched: GameStyles, // will be used to offer custom styling
+    // parentUnmatched: GameStyles, // will be used to offer custom theme colors
     // parentMatched: GameStyles,
     // springStyle: GameStyles,
     // cardNotFlippedStyle: GameStyles
@@ -112,12 +112,27 @@ export default class App extends Component {
   componentWillMount = () => {
     this.handleGameSet("start", GameStyles.cardOptions[0].url);
     const userData = Utility.storeAndGet("get");
-    this.setState({ userData }, () => console.log(this.state.userData));
+    this.setState({ userData });
   };
 
   componentDidMount = () => {
     console.log(GameStyles.cardOptions[0].url);
   };
+
+  /*
+  1) make getting all cards === 16 moves 1,000 pts. 
+  For every star lost, lose 200 points. Complete the game, you still get 400 points, regardless of time (for now). 
+
+  It needn't always be stars -- other icons could be funny, too :) 
+
+  - put volume slider and other non-score stuff on the Settings modal. 
+
+  - continue working out how to: look to localStorage to return a leaderboard. Starter (first-time-ever) modal should ask for player's name and allow them to choose one of three difficulty levels. Use `onMouseOver` & `onMouseLeave` to show/hide tooltips explaining how each difficulty works. 
+
+  - difficulty levels: 1) regular gameplay, 2) two unmatched cards switch after 10-15 seconds with two other cards in the deck, and 3) all unmatched cards switch places with other unmatched cards after 15-20 seconds with no match. Perhaps a countdown would work best for the last level (or last two)? Or implement a sensible balance of these ideas even starting from the first level. Or maybe tricky cards get slipped into the deck, and if they're not found within 5-10 seconds, two cards get matched by the game itself, meaning the player loses those points?! 
+
+  Add in levels. Since I'm storing both the original, static deck and the one changing as cards' characteristics change. That means I can implement an on-screen 10-second countdown warning users that the deck will be reshuffled -- cards already matched stay matched, but the unmatched cards randomly switch places with each other (the matched cards don't move). Use each card's `id` as a means of assigning their positions in the array (every matched set maintains its current index in the array, which will entail getting back a fully shuffled deck and placing matched cards in their original positions, placing matched cards specifically into an array of a set 16 index length, and then checking cards that go in to ensure they're not duplicates of matched cards set for specific spots in the deck -- if there are duplicates, removing them from the incoming array -- remember, three arrays involved: the original, static deck, an array of the matched cards, and an array of the newly shuffled deck that must be shuffled even if the matchedCards.length === 0). Lots of logic to implement, but seems completely doable. 
+  */
 
   getCards = url => {
     axios
@@ -167,7 +182,6 @@ export default class App extends Component {
 
   checkTime = () => {
     const { seconds, minutes, win } = this.state;
-    console.log(win);
     if (seconds > 59) {
       this.setState({ minutes: minutes + 1, seconds: 0 });
     }
@@ -216,22 +230,23 @@ export default class App extends Component {
   };
 
   handleStars = () => {
-    const { totalClickCount, stars } = this.state;
+    const { totalClickCount } = this.state;
+    const newStars = [...this.state.stars];
     if (totalClickCount === 12) {
-      stars.splice(-1, 1, "star-half-alt");
+      newStars.splice(-1, 1, "star-half-alt");
     } else if (totalClickCount === 17) {
-      stars.splice(-1, 1, ["far", "star"]);
+      newStars.splice(-1, 1, ["far", "star"]);
     } else if (totalClickCount === 22) {
-      stars.splice(1, 1, "star-half-alt");
+      newStars.splice(1, 1, "star-half-alt");
     } else if (totalClickCount === 27) {
-      stars.splice(1, 1, ["far", "star"]);
+      newStars.splice(1, 1, ["far", "star"]);
     } else if (totalClickCount === 32) {
-      stars.splice(0, 1, "star-half-alt");
+      newStars.splice(0, 1, "star-half-alt");
     } else if (totalClickCount === 37) {
-      stars.splice(0, 1, ["far", "star"]);
+      newStars.splice(0, 1, ["far", "star"]);
     }
     this.setState({
-      stars
+      stars: newStars
     });
   };
 
@@ -261,21 +276,15 @@ export default class App extends Component {
       },
       () => {
         clearInterval(this.timer);
-        console.log(this);
         this.getCards(url);
       }
     );
   };
 
   handleVolumeSlide = value => {
-    const { volume } = this.state;
-    console.log(value);
-    this.setState(
-      {
-        volume: value
-      },
-      () => console.log(volume)
-    );
+    this.setState({
+      volume: value
+    });
   };
 
   changeStyle = url => {
@@ -316,14 +325,14 @@ export default class App extends Component {
       userData
     } = this.state;
     return (
-      <div className="App">
-        {startModalOpen && (
+      <div className="App" style={{ width: "100vw" }}>
+        {/* {startModalOpen && (
           <StartModal
             startModalOpen={startModalOpen}
             userData={userData}
             handleStart={handleStart}
           />
-        )}
+        )} */}
         <ScorePanel
           restartGame={handleGameSet}
           stars={stars}

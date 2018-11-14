@@ -22,7 +22,7 @@ export default class VolumeSlide extends Component {
           width: "80%",
           background: "transparent",
           appearance: "none",
-          pointer: "cursor"
+          cursor: "pointer"
         }}>
         <Slider
           min={0}

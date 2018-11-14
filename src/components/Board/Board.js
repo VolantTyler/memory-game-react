@@ -7,7 +7,8 @@ export default class Board extends Component {
     openedCards: []
   };
   handleFlip = card => {
-    const { cards, handleCards, handleFirstClick, initClickCount } = this.props;
+    const { handleCards, handleFirstClick, initClickCount } = this.props;
+    const cards = [...this.props.cards];
     const openedCards = [];
 
     if (initClickCount === 0) {
@@ -34,8 +35,10 @@ export default class Board extends Component {
   };
 
   preEval = () => {
-    const { cards, handleCards, handleScore } = this.props;
-    const { openedCards } = this.state;
+    const { handleCards, handleScore } = this.props;
+    const cards = [...this.props.cards];
+
+    const openedCards = [...this.state.openedCards];
 
     handleScore();
 
@@ -53,13 +56,13 @@ export default class Board extends Component {
   };
 
   evalMatch = () => {
-    const { openedCards } = this.state;
+    const openedCards = [...this.state.openedCards];
     if (openedCards[0].card === openedCards[1].card) {
       this.handleMatch(openedCards[0]);
     } else {
       setTimeout(() => {
         this.flipEmBack();
-      }, 250);
+      }, 300);
     }
     this.setState({
       openedCards: []
@@ -67,7 +70,8 @@ export default class Board extends Component {
   };
 
   handleMatch = cardToMatch => {
-    const { cards, handleCards, handleCounter } = this.props;
+    const { handleCards, handleCounter } = this.props;
+    const cards = [...this.props.cards];
     cards.map(card => {
       if (cardToMatch.card === card.card) {
         card.matched = true;
@@ -80,7 +84,8 @@ export default class Board extends Component {
   };
 
   flipEmBack = () => {
-    const { cards, handleCards } = this.props;
+    const { handleCards } = this.props;
+    const cards = [...this.props.cards];
     cards.map(card => {
       if (!card.matched) {
         card.cardFlipped = false;

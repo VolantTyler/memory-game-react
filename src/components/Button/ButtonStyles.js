@@ -10,6 +10,7 @@ export const ButtonStyle = styled.button.attrs({
   margin: 0 0.5rem;
   outline: none;
   &:hover {
+    cursor: pointer;
     background-color: rgba(159, 22, 10, 0.6);
     color: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(139, 22, 10, 0.3);

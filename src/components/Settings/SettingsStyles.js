@@ -22,6 +22,7 @@ export const GearStyled = styled.div`
   stroke-width: 2px;
   filter: drop-shadow(0 1px 1px #777);
   &:hover {
+    cursor: pointer;
     animation: ${rotate} 3s ease-in-out 0s;
   }
   &:active {
